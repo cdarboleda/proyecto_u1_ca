@@ -14,9 +14,10 @@ public class EstudianteRepositoryImpl implements IEstudianteRepository{
 	}
 
 	@Override
-	public Estudiante buscar(String cedula) {
-		System.out.println("Se ha buscado en la base de datos el estudiante: "+ cedula);
-
+	public Estudiante buscar(String apellido) {
+		System.out.println("Se ha buscado en la base de datos el estudiante: "+ apellido);
+		Estudiante e = new Estudiante();
+		e.setApellido(apellido);
 		return null;
 	}
 
@@ -31,7 +32,8 @@ public class EstudianteRepositoryImpl implements IEstudianteRepository{
 	public void eliminar(String cedula) {
 		// TODO Auto-generated method stub
 		System.out.println("Se ha eliminado en la base de datos el estudiante: "+ cedula);
-
+		Estudiante e = new Estudiante();
+		e.setCedula(cedula);
 	}
 
 }
