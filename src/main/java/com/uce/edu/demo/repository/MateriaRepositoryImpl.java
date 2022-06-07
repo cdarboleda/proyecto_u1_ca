@@ -18,19 +18,20 @@ public class MateriaRepositoryImpl implements IMateriaRepository{
 		// TODO Auto-generated method stub
 		Materia m = new Materia();
 		m.setNombre(id);
+		System.out.println("Se ha buscado en la base de datos la materia: "+ id);
 		return m;
 	}
 
 	@Override
 	public void actualizar(Materia m) {
 		// TODO Auto-generated method stub
-		System.out.println("Se ha actualizado la materia "+ m);
+		System.out.println("Se ha actualizado la materia: "+ m);
 	}
 
 	@Override
 	public void eliminar(String id) {
 		// TODO Auto-generated method stub
-		System.out.println("Se ha eliminado la materia "+ id);
+		System.out.println("Se ha eliminado la materia: "+ id);
 	}
 
 }
