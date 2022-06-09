@@ -11,6 +11,7 @@ public class CuentaBancariaServiceImpl implements ICuentaBancariaService{
 
 	@Autowired
 	private ICuentaBancariaRepository bancariaRepository;
+	
 	//En este caso no se utiliza la informacion tal y como viene del repository
 	@Override
 	public void actualizar(CuentaBancaria c) {
@@ -22,6 +23,18 @@ public class CuentaBancariaServiceImpl implements ICuentaBancariaService{
 	public CuentaBancaria buscar(String numero) {
 		// TODO Auto-generated method stub
 		return this.bancariaRepository.buscar(numero);
+	}
+
+	@Override
+	public void crearCuenta(CuentaBancaria c) {
+		// TODO Auto-generated method stub
+		this.bancariaRepository.crear(c);
+	}
+
+	@Override
+	public void eliminarCuenta(String numero) {
+		// TODO Auto-generated method stub
+		this.bancariaRepository.eliminar(numero);
 	}
 
 }

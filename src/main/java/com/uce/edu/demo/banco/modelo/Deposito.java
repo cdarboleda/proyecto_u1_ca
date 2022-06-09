@@ -4,16 +4,24 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public class Deposito {
+	private String idDeposito;
 	private LocalDateTime fecha;
 	private String numeroCuentaDestino;
 	private BigDecimal monto;
 	
 	@Override
 	public String toString() {
-		return "Deposito [fecha=" + fecha + ", numeroCuentaDestino=" + numeroCuentaDestino + ", monto=" + monto + "]";
+		return "Deposito [id= "+idDeposito+" fecha=" + fecha + ", numeroCuentaDestino=" + numeroCuentaDestino + ", monto=" + monto + "]";
 	}
 	
 	//SET Y GET
+	public String getIdDeposito() {
+		return idDeposito;
+	}
+
+	public void setIdDeposito(String idDeposito) {
+		this.idDeposito = idDeposito;
+	}
 	public LocalDateTime getFecha() {
 		return fecha;
 	}

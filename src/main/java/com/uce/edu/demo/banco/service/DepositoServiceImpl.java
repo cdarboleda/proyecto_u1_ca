@@ -26,12 +26,22 @@ public class DepositoServiceImpl implements IDepositoService{
 		ctaDestino.setSaldo(saldoCtaDestino.add(monto));
 		this.bancariaService.actualizar(ctaDestino);
 		
-		
 		Deposito deposito = new Deposito();
 		deposito.setFecha(LocalDateTime.now());
 		deposito.setMonto(monto);
 		deposito.setNumeroCuentaDestino(numeroCtaDestino);
 		this.despositoRepository.insertarDeposito(deposito);
+	}
+
+	@Override
+	public Deposito buscarDeposito(String numero) {
+		// TODO Auto-generated method stub
+		return this.despositoRepository.buscarDeposito(numero);
+	}
+
+	@Override
+	public void eliminarDeposito(String numero) {
+		this.despositoRepository.eliminarDeposito(numero);
 	}
 
 }

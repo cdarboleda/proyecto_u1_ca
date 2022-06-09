@@ -18,8 +18,7 @@ public class TransferenciaServiceImpl implements ITransferenciaService{
 	@Autowired
 	private ICuentaBancariaService bancariaService;
 	@Autowired
-	private ITransferenciaRepository transferenciaRepository
-	;
+	private ITransferenciaRepository transferenciaRepository;
 	//Aqui no usamos directamente del repository, sino que si añadimos logicadenegocio
 	@Override
 	public void realizarTransferencia(String ctaOrigen, String ctaDestino, BigDecimal monto) {
@@ -42,6 +41,18 @@ public class TransferenciaServiceImpl implements ITransferenciaService{
 		t.setMontoTransferir(monto);
 		t.setFechaTransferencia(LocalDateTime.now());
 		this.transferenciaRepository.insertar(t);
+	}
+	
+	@Override
+	public Transferencia buscarTransferencia(String id) {
+		// TODO Auto-generated method stub
+		this.transferenciaRepository.buscar(id);
+		return null;
+	}
+	@Override
+	public void eliminarTransferencia(String id) {
+		// TODO Auto-generated method stub
+		this.transferenciaRepository.eliminar(id);
 	}
 
 }
