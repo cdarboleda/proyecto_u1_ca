@@ -12,7 +12,7 @@ public class ReporteTo {
 	
 	@Override
 	public String toString() {
-		return nombre + " - " + cantidad + " - " + precioV
+		return nombre + " - " + cantidad + " - $" + precioV
 				+ " - " + fechaIngresoBodega;
 	}
 	

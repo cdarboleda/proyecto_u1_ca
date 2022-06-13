@@ -1,6 +1,7 @@
 package com.uce.edu.demo.bodega.service;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +52,10 @@ public class GestorInventarioServiceImpl implements IGestorInventarioService {
 		BigDecimal g = pC.multiply(new BigDecimal(0.1));
 		BigDecimal iva = pC.multiply(new BigDecimal(0.12));
 		BigDecimal pV = pC.add(g).add(iva);
-		return pV;
+		
+		MathContext m = new MathContext(2);
+		
+		return pV.round(m);
 	}
 
 	private List<ReporteTo> inventarioAReporte(LocalDateTime desde) {

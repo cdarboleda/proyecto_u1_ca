@@ -1,6 +1,7 @@
 package com.uce.edu.demo.bodega.service;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
 import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,8 @@ public class ProductoServiceImpl implements IProductoService{
 		Producto p = new Producto();
 		p.setNombre(nombre);
 		p.setCantidad(cantidad);
-		p.setPrecioDistribuidor(precioDist);
+		MathContext m = new MathContext(2);
+		p.setPrecioDistribuidor(precioDist.round(m));
 		p.setFechaIngreso(fechaIngreso);
 		
 		this.productoRepository.crear(p);
