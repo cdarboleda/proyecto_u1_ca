@@ -1,32 +1,32 @@
 package com.uce.edu.demo;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.uce.edu.demo.modelo.Estudiante;
-import com.uce.edu.demo.modelo.Materia;
-import com.uce.edu.demo.modelo.Matricula;
-import com.uce.edu.demo.modelo.ProfesorGeneral;
-import com.uce.edu.demo.modelo.ProfesorMateria;
-import com.uce.edu.demo.service.IMatriculaService;
+import com.uce.edu.demo.tarea10.colecciondeunartista.modelo.Artista;
+import com.uce.edu.demo.tarea10.colecciondeunartista.modelo.Cancion;
+import com.uce.edu.demo.tarea10.coleccionmusica.service.IColeccionService;
 
 @SpringBootApplication
 public class ProyectoU1CaApplication implements CommandLineRunner{
 
 	@Autowired
-	private ProfesorGeneral general;
+	private IColeccionService coleccionService;
+	
 	@Autowired
-	private ProfesorGeneral general1;
+	private Cancion cancion1;
 	@Autowired
-	private ProfesorMateria materia;
+	private Cancion cancion2;
 	@Autowired
-	private ProfesorMateria materia1;
-	@Autowired 
-	private IMatriculaService matriculaService;
+	private Artista artista1;
+	@Autowired
+	private Artista artista2;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoU1CaApplication.class, args);
@@ -35,31 +35,36 @@ public class ProyectoU1CaApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-		this.general.setNombre("Cristian");
-		this.general.setApellido("Arboleda");
+
+		System.out.println("\nEjemplo Singleton");
+		System.out.println("Creamos un artista: ");
+		this.artista1.setNombre("Jamiroquai");
+		System.out.println(this.artista1);
+		System.out.println("Creamos un segundo artista: ");
+		this.artista2.setNombre("Simply Red");
+		System.out.println(this.artista2);
+		System.out.println("Volvemos a imprimir al artista 1: ");
+		System.out.println(this.artista1);
+		System.out.println("Se modificó debido a que existe una unica instancia (Singleton)");
 		
-		System.out.println(this.general);
-		System.out.println("---------");
-		System.out.println(this.general1);
-		this.general1.setNombre("Pepito");
-		System.out.println("----------");
-		System.out.println(this.general);
+		System.out.println("\nEjemplo Prototype");
+		System.out.println("Creamos una canción con información específica: ");
+		this.cancion1.setNombre("Cancion 1");
+		this.cancion1.setFechaPub(LocalDateTime.of(2000, 1,5,0,0));
+		System.out.println(this.cancion1);
+		System.out.println("Creamos una segunda canción con información diferente: ");
+		this.cancion2.setNombre("Cancion 2");
+		this.cancion2.setFechaPub(LocalDateTime.of(2000, 2,10,0,0));
+		System.out.println(this.cancion2);        
+		System.out.println("Volvemos a imprimir cancion 1");
+		System.out.println(this.cancion1);
+		System.out.println("Los resultados son tal y como fueron declarados, son particulares (Prototype)");
 		
-		System.out.println("----------");
-		System.out.println(this.general1);
-		
-		System.out.println("Ejemplo prototype");
-		this.materia.setNombre("Daniel");
-		this.materia.setApellido("Teran");
-		System.out.println(this.materia);
-		System.out.println("-----------");
-		System.out.println(this.materia1);
-		
-		Matricula matricula1 = new Matricula();
-		matricula1.setEstudiante(new Estudiante());
-		matricula1.setMateria(new ArrayList<Materia>());
-		matricula1.setNumero("13123");
-		this.matriculaService.crearMatricula(matricula1);
+		System.out.println();
+		List<Cancion> listaCanciones = new ArrayList<>();
+		listaCanciones.add(cancion1);
+		listaCanciones.add(cancion2);
+		this.coleccionService.agregar("Greatest Hits", "Mejores éxitos", listaCanciones);
 	}
 
 }

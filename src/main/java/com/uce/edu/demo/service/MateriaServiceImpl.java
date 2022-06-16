@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.uce.edu.demo.modelo.Materia;
-import com.uce.edu.demo.modelo.ProfesorGeneral;
 import com.uce.edu.demo.repository.MateriaRepositoryImpl;
 
 @Service
